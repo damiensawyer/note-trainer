@@ -5,6 +5,7 @@
 	//let  StaveNote = Vex.Flow.StaveNote;
 	let VF = Vex.Flow;
 	export const prerender = true;
+	export let title = '';
 	export let notes: Vex.Flow.StaveNote[];
 	function buildStaff(node, notes: Vex.Flow.StaveNote[]) {
 		var WorkspaceInformation = {
@@ -59,7 +60,7 @@
 </script>
 
 <section>
-	<h2>Standard Method</h2>
+	<h2>{title}</h2>
 	<div use:buildStaff={notes} />
 </section>
 

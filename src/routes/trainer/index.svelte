@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Staff from '../Staff/staff.svelte';
+	import Hoverable from '../Hoverable.svelte';
 	import Vex from 'vexflow';
 	let VF = Vex.Flow;
 	const notes1 = [
@@ -22,13 +23,11 @@
 		// A quarter-note C.
 		new VF.StaveNote({ clef: 'treble', keys: ['E/4'], duration: 'q' }),
 
-				// A quarter-note rest. Note that the key (b/4) specifies the vertical
-				new VF.StaveNote({ clef: 'treble', keys: ['b/4'], duration: 'qr' }),
+		// A quarter-note rest. Note that the key (b/4) specifies the vertical
+		new VF.StaveNote({ clef: 'treble', keys: ['b/4'], duration: 'qr' }),
 
 		// A quarter-note D.
 		new VF.StaveNote({ clef: 'treble', keys: ['e/4'], duration: 'q' }),
-
-
 
 		// A C-Major chord.
 		new VF.StaveNote({ clef: 'treble', keys: ['c/4'], duration: 'q' })
@@ -40,10 +39,17 @@
 </svelte:head>
 
 <section>
+	<Hoverable let:hovering={active}>
+		<div>
+			{#if active}
+				<Staff notes={notes1} title={'showing...'} />
+			{:else}
+				<Staff notes={notes2}  title={'Hover to change notes'} />
+			{/if}
+		</div>
+	</Hoverable>
 	<Staff notes={notes1} />
-	<Staff notes={notes2} />
-	<Staff notes={notes1} />
-
+	<Staff notes={undefined} />
 </section>
 
 <style>
