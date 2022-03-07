@@ -2,10 +2,12 @@
 
     // from https://webmidi-examples.glitch.me/
     import {onMount, onDestroy} from "svelte";
-
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher(); // https://svelte.dev/tutorial/event-forwarding
+    
     let midiIn = [];
     let midiOut = [];
-    let notesOn = new Map();
+    let notesOn = new Map<number,number>();
 
     function connect() {
         console.log('connecting to midi...');
@@ -65,30 +67,30 @@
         // http://webaudio.github.io/web-midi-api/#a-simple-monophonic-sine-wave-midi-synthesizer.
         const NOTE_ON = 9;
         const NOTE_OFF = 8;
-
+    console.log('eeeee',event);
         const cmd = event.data[0] >> 4;
-        const pitch = event.data[1];
-        const velocity = (event.data.length > 2) ? event.data[2] : 1;
+        const pitch:number = event.data[1];
+        const velocity:number = (event.data.length > 2) ? event.data[2] : 1;
 
         // You can use the timestamp to figure out the duration of each note.
         const timestamp = Date.now();
 
         // Note that not all MIDI controllers send a separate NOTE_OFF command for every NOTE_ON.
         if (cmd === NOTE_OFF || (cmd === NOTE_ON && velocity === 0)) {
-            console.log(`🎧 from ${event.srcElement.name} note off: pitch:${pitch}, velocity: ${velocity}`);
+            //console.log(`🎧 from ${event.srcElement.name} note off: pitch:${pitch}, velocity: ${velocity}`);
 
             // Complete the note!
             const note = notesOn.get(pitch);
             if (note) {
-                console.log(`🎵 pitch:${pitch}, duration:${timestamp - note} ms.`);
+                // console.log(`🎵 pitch:${pitch}, duration:${timestamp - note} ms.`);
                 notesOn.delete(pitch);
             }
         } else if (cmd === NOTE_ON) {
-            console.log(`🎧 from ${event.srcElement.name} note on: pitch:${pitch}, velocity: {velocity}`);
-
+            //console.log(`🎧 from ${event.srcElement.name} note on: pitch:${pitch}, velocity: {velocity}`);
             // One note can only be on at once.
-            //notesOn.set(pitch, timestamp);
+            notesOn.set(pitch, timestamp);
         }
+        dispatch('notesOn', notesOn)
     }
 
     onMount(() => {
@@ -102,9 +104,7 @@
     })
 </script>
 
-<div>
-    <p>midi aksjdhkassh</p>
-</div>
+
 
 <style>
 

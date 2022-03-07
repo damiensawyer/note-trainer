@@ -3,11 +3,17 @@
 </script>
 
 <script lang="ts">
-    import Counter from '$lib/Counter.svelte';
     import Midi from "$lib/Midi.svelte";
-    
-    
-    
+
+    let n: number[] = []
+
+    function handleMessage(event) {
+        //console.log(event.detail)
+        let r = [...event.detail.keys()];
+        //console.log(r)
+        n = r;
+    }
+
 </script>
 
 <svelte:head>
@@ -15,9 +21,13 @@
 </svelte:head>
 
 <section>
-
-    <Midi/>
-    <Counter/>
+    <h3>Insert midi keyboard and play notes</h3>
+    <Midi on:notesOn={handleMessage}/>
+    <ul>
+        {#each n as note}
+            <li>{note}</li>
+        {/each}
+    </ul>
 </section>
 
 <style>
@@ -48,3 +58,4 @@
         display: block;
     }
 </style>
+
