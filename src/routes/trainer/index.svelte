@@ -1,12 +1,9 @@
 <script lang="ts">
-	export class MultiVoice {
-		voice1: Vex.Flow.Voice;
-		voice2: Vex.Flow.Voice;
-	}
-
+	
 	import Staff from '../Staff/staff.svelte';
 	import Hoverable from '../Hoverable.svelte';
 	import Vex from 'vexflow';
+import TwoVoiceStaff from '../TwoVoiceStaff/TwoVoiceStaff.svelte';
 	let VF = Vex.Flow;
 	const notes1 = [
 		// A quarter-note C.
@@ -51,6 +48,7 @@
 	voice3.addTickable(new VF.StaveNote({ clef: 'treble', keys: ['b/4'], duration: 'w' }));
 
 	var voice3b = new VF.Voice({ num_beats: 4, beat_value: 4 });
+	var voice3c = new VF.Voice({ num_beats: 0, beat_value: 4 });
 	let n3 = new VF.StaveNote({ clef: 'treble', keys: ['c/4'], duration: 'w' });
 	let n4 = new VF.StaveNote({ clef: 'treble', keys: ['b/4'], duration: 'w' });
 	n4.setStyle({ fillStyle: 'red', strokeStyle: 'red' }); // https://github.com/0xfe/vexflow/wiki/Coloring-%26-Styling-Notes
@@ -75,6 +73,8 @@
 </svelte:head>
 
 <section>
+
+
 	<Hoverable let:hovering={active}>
 		<div>
 			{#if active}
@@ -98,6 +98,10 @@
 	<Staff voice={voice1} />
 	<Staff voice={voice3} />
 	<Staff voice={voice4} />
+
+	
+
+	
 	<Staff voice={undefined} />
 </section>
 
