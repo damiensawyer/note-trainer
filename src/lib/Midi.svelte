@@ -1,7 +1,7 @@
 ﻿<script lang="ts">
 
     // from https://webmidi-examples.glitch.me/
-    import {onMount} from "svelte";
+    import {onMount, onDestroy} from "svelte";
 
     let midiIn = [];
     let midiOut = [];
@@ -53,6 +53,12 @@
         }
     }
 
+    function stopListening() {
+        for (const input of midiIn) {
+            input.removeEventListener('midimessage',midiMessageReceived);
+        }
+    }
+    
 
     function midiMessageReceived(event) {
         // MIDI commands we care about. See
@@ -87,6 +93,11 @@
 
     onMount(() => {
         connect();
+
+    })
+
+    onDestroy(() => {
+        stopListening()
 
     })
 </script>
