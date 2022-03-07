@@ -6,8 +6,8 @@
 	let VF = Vex.Flow;
 	export const prerender = true;
 	export let title = '';
-	export let notes: Vex.Flow.StaveNote[];
-	function buildStaff(node, notes: Vex.Flow.StaveNote[]) {
+	export let voice: Vex.Flow.Voice;
+	function buildStaff(node, voice: Vex.Flow.Voice) {
 		var WorkspaceInformation = {
 			// The div in which you're going to work
 			div: node, //document.getElementById('some-div-id'),
@@ -41,9 +41,7 @@
 		stave.setContext(context).draw();
 
 		// Create a voice in 4/4 and add above notes
-		if (!!notes) {
-			var voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
-			voice.addTickables(notes);
+		if (!!voice) {
 
 			// Format and justify the notes to 400 pixels.
 			var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 200);
@@ -61,7 +59,7 @@
 
 <section>
 	<h2>{title}</h2>
-	<div use:buildStaff={notes} />
+	<div use:buildStaff={voice} />
 </section>
 
 <style>
