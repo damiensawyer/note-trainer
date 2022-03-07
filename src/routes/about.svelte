@@ -22,12 +22,26 @@
 	<h1>About Note Trainer</h1>
 
 	<p>Note training tool for my kids. Inspired by:</p>
+
+<ul>
+	<li><a href='https://www.youtube.com/watch?v=iamRkSsnIS'>https://www.youtube.com/watch?v=iamRkSsnIS0</a></li>
+		<li><a href='https://jankleinert.com/blog/2020/01/22/learning-to-read-music-with-the-web-midi-api.htm'>https://jankleinert.com/blog/2020/01/22/learning-to-read-music-with-the-web-midi-api.html</a></li>
+</ul>
+<h2>Links</h2>
 	<ul>
+		<li><a href='https://svelte.dev/docs#before-we-begin'>Svelte Docs</a></li>
+		<li><a href='https://github.com/0xfe/vexflow'>Vexflow Docs</a></li>
+		<li><a href='https://github.com/0xfe/vexflow/wiki/Tutorial'>Vexflow Tutorial</a></li>
+		<li><a href='https://0xfe.github.io/vexflow/api/'>Generated API Docs</a></li>
+		<li><a href='https://github.com/0xfe/vexflow/wiki/Animation-with-VexFlow-&-CSS'>Vexflow Animation</a></li>
+		<li><a href='https://github.com/0xfe/vexflow/blob/master/tests/style_tests.ts'>Vexflow Test sample</a></li>
 		<li><a href='https://ourcodeworld.com/articles/read/293/rendering-music-notation-music-sheet-in-javascript-with-vexflow-2'>https://ourcodeworld.com/articles/read/293/rendering-music-notation-music-sheet-in-javascript-with-vexflow-2</a></li>
 		<li><a href='https://webmidi-examples.glitch.me'>https://webmidi-examples.glitch.me</a></li>
-		<li><a href='https://www.youtube.com/watch?v=iamRkSsnIS'>https://www.youtube.com/watch?v=iamRkSsnIS0</a></li>
-		<li><a href='https://jankleinert.com/blog/2020/01/22/learning-to-read-music-with-the-web-midi-api.htm'>https://jankleinert.com/blog/2020/01/22/learning-to-read-music-with-the-web-midi-api.html</a></li>
+		
 	</ul>
+
+	<h3>Svelte Stuff</h3>
+	- <a href="https://www.youtube.com/watch?v=vef_6C1M6HY&t=226s">Actions</a> 
 </div>
 
 <style>
