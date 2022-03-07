@@ -1,4 +1,5 @@
 <script lang="ts">
+
 	import { onMount, setContext } from 'svelte';
 	import Vex from 'vexflow';
 
@@ -42,7 +43,6 @@
 
 		// Create a voice in 4/4 and add above notes
 		if (!!voice) {
-
 			// Format and justify the notes to 400 pixels.
 			var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 200);
 

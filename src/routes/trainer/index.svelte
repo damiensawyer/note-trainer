@@ -1,4 +1,9 @@
 <script lang="ts">
+	export class MultiVoice {
+		voice1: Vex.Flow.Voice;
+		voice2: Vex.Flow.Voice;
+	}
+
 	import Staff from '../Staff/staff.svelte';
 	import Hoverable from '../Hoverable.svelte';
 	import Vex from 'vexflow';
@@ -83,9 +88,9 @@
 	<Hoverable let:hovering={active}>
 		<div>
 			{#if !active}
-			<Staff voice={voice3} title={'Hover to change notes'} />
+				<Staff voice={voice3} title={'Hover to change notes'} />
 			{:else}
-			<Staff voice={voice3b} title={'showing...'} />
+				<Staff voice={voice3b} title={'showing...'} />
 			{/if}
 		</div>
 	</Hoverable>
