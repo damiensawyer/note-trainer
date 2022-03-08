@@ -1,14 +1,8 @@
 ﻿import Vex from 'vexflow';
-/*https://computermusicresource.com/midikeys.html*/
-
-class MyModule {
- 
-}
-
 let VF = Vex.Flow;
 type  StaveNote = Vex.Flow.StaveNote;
 
-function MergeMaps<TKey, TValue>(...maps: Map<TKey, TValue>[]) {
+const MergeMaps = <TKey, TValue>(...maps: Map<TKey, TValue>[]) => {
     let result = new Map<TKey, TValue>();
     maps.forEach((m) => {
         m.forEach((value, key) => result.set(key, value));
@@ -16,12 +10,12 @@ function MergeMaps<TKey, TValue>(...maps: Map<TKey, TValue>[]) {
     return result;
 }
 
-function makeNote(key: string, isSharp: boolean, isFlat: boolean) {
+const makeNote = (key: string, isSharp: boolean, isFlat: boolean) => {
     return new VF.StaveNote({clef: 'treble', keys: [key], duration: 'q'})
 }
 
-function buildOctave(octave: number): Map<number, StaveNote> {
-
+const buildOctave = (octave: number): Map<number, StaveNote> => {
+    /*https://computermusicresource.com/midikeys.html*/
     let i = (12 * octave) + 24;
     let result = new Map<number, StaveNote>(
         [
@@ -44,9 +38,8 @@ function buildOctave(octave: number): Map<number, StaveNote> {
 }
 
 export const MidiNumberToNote = (): Map<number, StaveNote> => {
-
     let sets = [...Array(4).keys()].map(x => buildOctave(x)) //?
     let result = MergeMaps(...sets)
-    return result;
-
+    return result
 }
+

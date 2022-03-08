@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	import { onMount, setContext } from 'svelte';
 	import Vex from 'vexflow';
 
