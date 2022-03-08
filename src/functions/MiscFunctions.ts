@@ -21,7 +21,7 @@ const makeNote = (key: string, isSharp: boolean, isFlat: boolean):StaveNote => {
 
 const buildOctave = (octave: number): Map<number, StaveNote> => {
     /*https://computermusicresource.com/midikeys.html*/
-    let i = (12 * octave) + 24;
+    let i = (12 * (octave - 1)) + 24;
     let result = new Map<number, StaveNote>(
         [
             [i++, makeNote(`c/${octave}`, false, false)],
