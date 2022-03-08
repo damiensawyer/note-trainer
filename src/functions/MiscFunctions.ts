@@ -24,18 +24,18 @@ const buildOctave = (octave: number): Map<number, StaveNote> => {
     let i = (12 * octave) + 24;
     let result = new Map<number, StaveNote>(
         [
-            [i++, makeNote(`C/${octave}`, false, false)],
-            [i++, makeNote(`C/${octave}`, true, false)],
-            [i++, makeNote(`D/${octave}`, false, false)],
-            [i++, makeNote(`D/${octave}`, true, false)],
-            [i++, makeNote(`E/${octave}`, false, false)],
-            [i++, makeNote(`F/${octave}`, false, false)],
-            [i++, makeNote(`F/${octave}`, true, false)],
-            [i++, makeNote(`G/${octave}`, false, false)],
-            [i++, makeNote(`G/${octave}`, true, false)],
-            [i++, makeNote(`A/${octave}`, false, false)],
-            [i++, makeNote(`A/${octave}`, true, false)],
-            [i++, makeNote(`B/${octave}`, false, false)]
+            [i++, makeNote(`c/${octave}`, false, false)],
+            [i++, makeNote(`c/${octave}`, true, false)],
+            [i++, makeNote(`d/${octave}`, false, false)],
+            [i++, makeNote(`d/${octave}`, true, false)],
+            [i++, makeNote(`e/${octave}`, false, false)],
+            [i++, makeNote(`f/${octave}`, false, false)],
+            [i++, makeNote(`f/${octave}`, true, false)],
+            [i++, makeNote(`g/${octave}`, false, false)],
+            [i++, makeNote(`g/${octave}`, true, false)],
+            [i++, makeNote(`a/${octave}`, false, false)],
+            [i++, makeNote(`a/${octave}`, true, false)],
+            [i++, makeNote(`b/${octave}`, false, false)]
         ]
     )
 

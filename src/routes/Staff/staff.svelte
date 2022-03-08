@@ -39,18 +39,24 @@
 		//console.log('options', stave.options);
 		context.clear();
 		stave.setContext(context).draw();
-
+		
 		// Create a voice in 4/4 and add above notes
-		if (!!voice) {
-			// Format and justify the notes to 400 pixels.
-			var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 200);
-
-			// Render voice
-			voice.draw(context, stave);
-		}
+		// if (!!voice) {
+		// 	// Format and justify the notes to 400 pixels.
+		// 	var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 200);
+		//
+		// 	// Render voice
+		// 	//voice.draw(context, stave);
+		// }
 		return {
-			update(notes) {
-				console.log('updating....', notes);
+			update(voice) {
+				context.clear();
+				stave.setContext(context).draw();
+				var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 200);
+
+				// Render voice
+				voice.draw(context, stave);
+				console.log('updating....', voice);
 			}
 		};
 	}
