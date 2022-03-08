@@ -55,6 +55,7 @@
     <h3>Insert midi keyboard and play notes</h3>
     <Midi on:notesOn={handleMessage}/>
     <Staff bind:voice={voice}/>
+    
 </section>
 
 <style>

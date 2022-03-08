@@ -41,7 +41,16 @@
 	</ul>
 
 	<h3>Svelte Stuff</h3>
-	- <a href="https://www.youtube.com/watch?v=vef_6C1M6HY&t=226s">Actions</a> 
+	- <a href="https://www.youtube.com/watch?v=vef_6C1M6HY&t=226s">Actions</a>
+
+	<h3>Work in Progress: Things To Do</h3>
+	<ul>
+	<li>Handle Sharps and Flats</li>
+	<li>Ask Questions</li>
+	<li>Play Sounds</li>
+	<li>Settings Page</li>
+	<li>Bass Cleff</li>
+	</ul>
 </div>
 
 <style>

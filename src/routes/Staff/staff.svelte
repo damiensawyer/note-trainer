@@ -14,7 +14,7 @@
             div: node, //document.getElementById('some-div-id'),
             // Vex creates a svg with specific dimensions
             canvasWidth: 700,
-            canvasHeight: 600
+            canvasHeight: 900
         };
         // Create a renderer with SVG
         var renderer = new VF.Renderer(WorkspaceInformation.div, VF.Renderer.Backends.SVG);
