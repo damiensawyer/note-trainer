@@ -10,7 +10,7 @@ import adapter from '@sveltejs/adapter-static';
              precompress: false,
              paths: {
                  // change below to your repo name
-                 base: "/notes-trainer"
+                 base: "/note-trainer"
              },
          })
      }}
