@@ -26,7 +26,7 @@
         if (n.length === 0) return undefined
 
         let notes = n.map(x => {
-            let b = MidiNumberToNote().get(x)
+            let b = MidiNumberToNote().get(x) ?? ['']
             return b
         })
 

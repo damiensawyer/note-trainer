@@ -71,14 +71,13 @@
         const cmd = event.data[0] >> 4;
         const pitch:number = event.data[1];
         const velocity:number = (event.data.length > 2) ? event.data[2] : 1;
-
+        if (pitch < 24) return;
         // You can use the timestamp to figure out the duration of each note.
         const timestamp = Date.now();
 
         // Note that not all MIDI controllers send a separate NOTE_OFF command for every NOTE_ON.
         if (cmd === NOTE_OFF || (cmd === NOTE_ON && velocity === 0)) {
             //console.log(`🎧 from ${event.srcElement.name} note off: pitch:${pitch}, velocity: ${velocity}`);
-
             // Complete the note!
             const note = notesOn.get(pitch);
             if (note) {
