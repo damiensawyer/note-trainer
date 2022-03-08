@@ -43,7 +43,7 @@ const buildOctave = (octave: number): Map<number, StaveNote> => {
 }
 
 export const MidiNumberToNote = (): Map<number, StaveNote> => {
-    let sets = [...Array(6).keys()].map(x => buildOctave(x)) //?
+    let sets = [...Array(9).keys()].map(x => buildOctave(x)) //?
     let result = MergeMaps(...sets)
     return result
 }

@@ -22,7 +22,7 @@
     }
 
     $: pressedNotes = () => {
-        
+
         if (n.length === 0) return undefined
 
         let notes = n.map(x => {
@@ -37,33 +37,13 @@
     }
     // https://svelte.dev/docs#component-format-script-3-$-marks-a-statement-as-reactive
     $: voice = f(pressedNotes())
-        
-    
 
-    function f(n:VF.StaveNote) {
-        console.log('xxxxxxxxxxxxx',n)
-        if (!n || !n.keys || n.keys.length === 0) {
-            var v1 = new VF.Voice({num_beats: 1, beat_value: 4});
-            
-            v1.addTickables([new VF.StaveNote({clef: 'treble', keys: ['c/4','d/4','e/4'], duration: 'q'})])
-            return v1
-        }
-        else
-        {
-            console.log('zzz',n.keys)
-            var v2 = new VF.Voice({num_beats: 1, beat_value: 4});
-            v2.addTickable(new VF.StaveNote({clef: 'treble', keys: n.keys, duration: 'q'}))
-            //v.addTickable(new VF.StaveNote({clef: 'treble', keys: n.keys, duration: 'q'}))
-            return v2
-        }
-        
+    function f(n: VF.StaveNote) {
+        if (!(n?.keys)) return undefined;
+        var v1 = new VF.Voice({num_beats: 1, beat_value: 4});
+        v1.addTickable(new VF.StaveNote({clef: 'treble', keys: n?.keys ?? [], duration: 'q'}))
+        return v1;
     }
-
-    // var voice3c = new VF.Voice({ num_beats: 0, beat_value: 4 });
-    // let n3 = new VF.StaveNote({ clef: 'treble', keys: ['c/4'], duration: 'w' });
-    // let n4 = new VF.StaveNote({ clef: 'treble', keys: ['b/4'], duration: 'w' });
-    // n4.setStyle({ fillStyle: 'red', strokeStyle: 'red' }); // https://github.com/0xfe/vexflow/wiki/Coloring-%26-Styling-Notes
-    // voice3b.addTickables([n4]);
 
 </script>
 
@@ -74,17 +54,7 @@
 <section>
     <h3>Insert midi keyboard and play notes</h3>
     <Midi on:notesOn={handleMessage}/>
-    <!--{@debug voice}-->
-    <!--{#key voice}-->
-        <Staff bind:voice={voice}/>
-    <!--{/key}-->
-
-    <ul>
-        {#each n as note}
-            <li>{note}</li>
-        {/each}
-    </ul>
-
+    <Staff bind:voice={voice}/>
 </section>
 
 <style>
