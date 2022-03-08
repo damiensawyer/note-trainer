@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="2.619">
+  <testsuite name="src\functions\math.test.ts" errors="0" failures="0" skipped="0" timestamp="2022-03-08T05:36:17" time="1.498" tests="4">
+    <testcase classname="maths tests should add numbers" name="maths tests should add numbers" time="0.002">
+    </testcase>
+    <testcase classname="maths tests should subtract numbers" name="maths tests should subtract numbers" time="0">
+    </testcase>
+    <testcase classname="simple tests should add numbers" name="simple tests should add numbers" time="0">
+    </testcase>
+    <testcase classname="simple tests 2 should add numbers" name="simple tests 2 should add numbers" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="src\functions\function.test.ts" errors="0" failures="0" skipped="0" timestamp="2022-03-08T05:36:17" time="1.963" tests="1">
+    <testcase classname="maths tests should add numbers" name="maths tests should add numbers" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>

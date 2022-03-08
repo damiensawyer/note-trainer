@@ -10,6 +10,7 @@
     "oldtest": "playwright test",
     "test": "jest",
     "test:watch": "npm test -- --watch",
+    "test:ci": "npm run test -- --watchAll=false --reporters=default --reporters=jest-junit",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
@@ -35,7 +36,8 @@
     "svelte-preprocess": "^4.10.1",
     "ts-jest": "^27.1.3",
     "tslib": "^2.3.1",
-    "typescript": "~4.6.2"
+    "typescript": "~4.6.2",
+    "jest-junit": "^13.0.0"
   },
   "type": "module",
   "dependencies": {
@@ -61,5 +63,10 @@
       "ts",
       "svelte"
     ]
+  },
+  "jest-junit": {
+    "suiteNameTemplate": "{filepath}",
+    "outputDirectory": ".",
+    "outputName": "junit.xml"
   }
 }
