@@ -1,6 +1,11 @@
-﻿import Vex from 'vexflow';
-let VF = Vex.Flow;
-type  StaveNote = Vex.Flow.StaveNote;
+﻿
+class StaveNote
+{
+    clef:string
+    keys:string[]
+    duration:string
+    
+}
 
 const MergeMaps = <TKey, TValue>(...maps: Map<TKey, TValue>[]) => {
     let result = new Map<TKey, TValue>();
@@ -10,8 +15,8 @@ const MergeMaps = <TKey, TValue>(...maps: Map<TKey, TValue>[]) => {
     return result;
 }
 
-const makeNote = (key: string, isSharp: boolean, isFlat: boolean) => {
-    return new VF.StaveNote({clef: 'treble', keys: [key], duration: 'q'})
+const makeNote = (key: string, isSharp: boolean, isFlat: boolean):StaveNote => {
+    return  {clef: 'treble', keys: [key], duration: 'q'}
 }
 
 const buildOctave = (octave: number): Map<number, StaveNote> => {
@@ -38,7 +43,7 @@ const buildOctave = (octave: number): Map<number, StaveNote> => {
 }
 
 export const MidiNumberToNote = (): Map<number, StaveNote> => {
-    let sets = [...Array(4).keys()].map(x => buildOctave(x)) //?
+    let sets = [...Array(6).keys()].map(x => buildOctave(x)) //?
     let result = MergeMaps(...sets)
     return result
 }

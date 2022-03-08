@@ -4,7 +4,14 @@
 
 <script lang="ts">
     import Midi from "$lib/Midi.svelte";
+    import Staff from './Staff/staff.svelte'
+    import {MidiNumberToNote} from '../functions/MiscFunctions'
 
+
+    import Hoverable from './Hoverable.svelte';
+    import Vex from 'vexflow';
+
+    let VF = Vex.Flow;
     let n: number[] = []
 
     function handleMessage(event) {
@@ -14,6 +21,39 @@
         n = r;
     }
 
+    $: pressedNotes = () => {
+        console.log('nnnnn',n)
+        if (n.length === 0 ) return []
+
+        let notes = n.map(x => {
+            let b = MidiNumberToNote().get(x)
+            return b
+        })
+        
+        let f = notes.flatMap(x => x.keys);
+        console.log('ffff',f)
+            return new VF.StaveNote({clef: 'treble',keys:f, duration:'q' })
+            
+     }
+    
+    $: voice = () => {
+        let b = pressedNotes()
+        console.log('pressed!!!', b)
+        if (b.length === 0) return new undefined;
+         var v = new VF.Voice({ num_beats: 1, beat_value: 4 }); 
+        v.addTickables(b)
+        return v
+    }
+        
+
+
+
+    // var voice3c = new VF.Voice({ num_beats: 0, beat_value: 4 });
+    // let n3 = new VF.StaveNote({ clef: 'treble', keys: ['c/4'], duration: 'w' });
+    // let n4 = new VF.StaveNote({ clef: 'treble', keys: ['b/4'], duration: 'w' });
+    // n4.setStyle({ fillStyle: 'red', strokeStyle: 'red' }); // https://github.com/0xfe/vexflow/wiki/Coloring-%26-Styling-Notes
+    // voice3b.addTickables([n4]);
+    
 </script>
 
 <svelte:head>
@@ -23,11 +63,15 @@
 <section>
     <h3>Insert midi keyboard and play notes</h3>
     <Midi on:notesOn={handleMessage}/>
+    <Staff voice={pressedNotes().length ==0 ? undefined : voice} />
+    
+
     <ul>
         {#each n as note}
-            <li>{note}</li>
+            <li>{note.clef}</li>
         {/each}
     </ul>
+    
 </section>
 
 <style>
