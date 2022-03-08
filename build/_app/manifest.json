@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-c36217e9.js",
+    "file": "start-e2ca1a13.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -84,7 +84,7 @@
       "_vendor-f0ecd93f.js"
     ],
     "css": [
-      "assets/TwoVoiceStaff.svelte_svelte_type_style_lang-e7f215fb.css"
+      "assets/pages/trainer/index.svelte-f57715f3.css"
     ]
   },
   "src/routes/Hoverable.svelte": {
@@ -107,7 +107,7 @@
       "src/routes/Hoverable.svelte"
     ],
     "css": [
-      "assets/TwoVoiceStaff.svelte_svelte_type_style_lang-e7f215fb.css"
+      "assets/pages/trainer/index.svelte-f57715f3.css"
     ]
   },
   "src/routes/about.svelte": {
