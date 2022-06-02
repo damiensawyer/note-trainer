@@ -45,6 +45,7 @@
 
 	<h3>Work in Progress: Things To Do</h3>
 	<ul>
+		<li>Mode for Trebble Cleff or Bass Cleff. Could also have both at once and show each keypress on each simultaneously to show that they overlap.</li>
 	<li>Handle Sharps and Flats</li>
 	<li>Ask Questions</li>
 	<li>Play Sounds</li>
