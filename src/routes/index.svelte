@@ -63,7 +63,23 @@
 
 <section>
     <h3>Insert midi keyboard and play notes</h3>
-    Select Staff: <Switch on:change={handleClefChange} checked={checkedValue} />
+    Select Staff: <Switch on:change={handleClefChange} checked={checkedValue}>
+    <div
+    style=" display: flex; justify-content: center; align-items: center; height:
+    100%; font-size: 10px; color: black; padding-right: 2px; "
+    slot="unCheckedIcon">
+    Bass
+  </div>
+  <div
+  style=" display: flex; justify-content: center; align-items: center; height:
+  100%; font-size: 10px; color: yellow; padding-right: 2px; "
+  slot="checkedIcon">
+  Treb
+</div>
+
+</Switch>
+    
+    
     <Midi on:notesOn={handleMessage}/>
 
     {#if checkedValue}
