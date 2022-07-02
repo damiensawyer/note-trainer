@@ -7,7 +7,7 @@
     export const prerender = true;
     export let title = '';
     export let voice: Vex.Flow.Voice;
-
+    export let clef: string;
     function buildStaff(node, voice: Vex.Flow.Voice) {
         var WorkspaceInformation = {
             // The div in which you're going to work
@@ -34,21 +34,14 @@
             // Create a stave of width 400 at position x0, y0 on the SVG.
         var stave = new VF.Stave(0, 100, 350);
         // Add a clef and time signature.
-        stave.addClef('treble').addTimeSignature('4/4');
+        //stave.addClef('treble').addTimeSignature('4/4');
+        stave.addClef(clef).addTimeSignature('4/4');
         // Set the context of the stave our previous exposed context and execute the method draw !
         //stave.options = { ...stave.options };
         //console.log('options', stave.options);
         context.clear();
         stave.setContext(context).draw();
 
-        // Create a voice in 4/4 and add above notes
-        // if (!!voice) {
-        // 	// Format and justify the notes to 400 pixels.
-        // 	var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 200);
-        //
-        // 	// Render voice
-        // 	//voice.draw(context, stave);
-        // }
         return {
             update(voice) {
                 context.clear();

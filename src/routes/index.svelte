@@ -20,7 +20,8 @@
         //console.log(r)
         n = r;
     }
-
+    //$: clef = 'treble';
+    $: clef = 'bass';
     $: pressedNotes = () => {
 
         if (n.length === 0) return undefined
@@ -32,16 +33,16 @@
 
         let f = notes.flatMap(x => x.keys);
         console.log('nnnnn', f)
-        return new VF.StaveNote({clef: 'treble', keys: f, duration: 'q'})
+        return new VF.StaveNote({clef:'treble', keys: f, duration: 'q'})
 
     }
     // https://svelte.dev/docs#component-format-script-3-$-marks-a-statement-as-reactive
-    $: voice = f(pressedNotes())
+    $: voice = f(pressedNotes(), clef)
 
-    function f(n: VF.StaveNote) {
+    function f(n: VF.StaveNote, clef:string) {
         if (!(n?.keys)) return undefined;
         var v1 = new VF.Voice({num_beats: 1, beat_value: 4});
-        v1.addTickable(new VF.StaveNote({clef: 'treble', keys: n?.keys ?? [], duration: 'q'}))
+        v1.addTickable(new VF.StaveNote({clef: clef, keys: n?.keys ?? [], duration: 'q'}))
         return v1;
     }
 
@@ -54,7 +55,7 @@
 <section>
     <h3>Insert midi keyboard and play notes</h3>
     <Midi on:notesOn={handleMessage}/>
-    <Staff bind:voice={voice}/>
+    <Staff bind:voice={voice} bind:clef={clef}/>
     
 </section>
 

@@ -20,4 +20,3 @@ describe('simple tests 2', () => {
         expect(true).toBe(true);
     })
 });
-

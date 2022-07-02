@@ -73,8 +73,6 @@ import TwoVoiceStaff from '../TwoVoiceStaff/TwoVoiceStaff.svelte';
 </svelte:head>
 
 <section>
-
-
 	<Hoverable let:hovering={active}>
 		<div>
 			{#if active}

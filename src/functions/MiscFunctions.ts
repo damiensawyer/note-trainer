@@ -1,7 +1,6 @@
 ﻿
 class StaveNote
 {
-    clef:string
     keys:string[]
     duration:string
     
@@ -16,7 +15,7 @@ const MergeMaps = <TKey, TValue>(...maps: Map<TKey, TValue>[]) => {
 }
 
 const makeNote = (key: string, isSharp: boolean, isFlat: boolean):StaveNote => {
-    return  {clef: 'treble', keys: [key], duration: 'q'}
+    return  { keys: [key], duration: 'q'}
 }
 
 const buildOctave = (octave: number): Map<number, StaveNote> => {
@@ -26,7 +25,7 @@ const buildOctave = (octave: number): Map<number, StaveNote> => {
         [
             [i++, makeNote(`c/${octave}`, false, false)],
             [i++, makeNote(`c/${octave}`, true, false)],
-            [i++, makeNote(`d/${octave}`, false, false)],
+            [i++, makeNote(`d/${octave}`, false, false)], 
             [i++, makeNote(`d/${octave}`, true, false)],
             [i++, makeNote(`e/${octave}`, false, false)],
             [i++, makeNote(`f/${octave}`, false, false)],
