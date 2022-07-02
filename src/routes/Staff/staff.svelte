@@ -33,7 +33,7 @@
          */
             // Create a stave of width 400 at position x0, y0 on the SVG.
         var stave = new VF.Stave(0, 100, 350);
-        stave.addClef(clef).addTimeSignature('4/4');        // Set the context of the stave our previous exposed context and execute the method draw !
+        stave.addClef(clef).addTimeSignature('4/4');
         context.clear();
         stave.setContext(context).draw();
 

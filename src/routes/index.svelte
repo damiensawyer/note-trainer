@@ -14,11 +14,12 @@
     let VF = Vex.Flow;
     let n: number[] = []
 
-    let checkedValue = true;
+    $: checkedValue = true;
 
     function handleClefChange(e) {
         const { checked } = e.detail;
         checkedValue = checked;
+        
     }
 
     function handleMessage(event) {
@@ -29,6 +30,7 @@
     }
     //$: clef = 'treble';
     $: clef = checkedValue ? 'treble' : 'bass';
+    $: items = [1];
     $: pressedNotes = () => {
 
         if (n.length === 0) return undefined
@@ -61,10 +63,18 @@
 
 <section>
     <h3>Insert midi keyboard and play notes</h3>
-    <pre>Switch between trebble and bass (I have a bug through where the symbol isn't updating yet)</pre>
-    <Switch on:change={handleClefChange} checked={checkedValue} />
+    Select Staff: <Switch on:change={handleClefChange} checked={checkedValue} />
     <Midi on:notesOn={handleMessage}/>
-    <Staff bind:voice={voice} bind:clef={clef}/>
+
+    {#if checkedValue}
+	    <Staff bind:voice={voice} clef={'treble'}/>
+    {:else}
+        <Staff bind:voice={voice} clef={'bass'}/>
+    {/if}
+
+
+    
+    
     
 </section>
 
