@@ -33,12 +33,7 @@
          */
             // Create a stave of width 400 at position x0, y0 on the SVG.
         var stave = new VF.Stave(0, 100, 350);
-        // Add a clef and time signature.
-        //stave.addClef('treble').addTimeSignature('4/4');
-        stave.addClef(clef).addTimeSignature('4/4');
-        // Set the context of the stave our previous exposed context and execute the method draw !
-        //stave.options = { ...stave.options };
-        //console.log('options', stave.options);
+        stave.addClef(clef).addTimeSignature('4/4');        // Set the context of the stave our previous exposed context and execute the method draw !
         context.clear();
         stave.setContext(context).draw();
 
@@ -46,10 +41,9 @@
             update(voice) {
                 context.clear();
                 stave.setContext(context).draw();
-
+                
                 if (!!voice) {
-                    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 200);
-                    // Render voice
+                    new VF.Formatter().joinVoices([voice]).format([voice], 200);
                     voice.draw(context, stave);
                     console.log('updating....', voice);
                 }

@@ -6,13 +6,20 @@
     import Midi from "$lib/Midi.svelte";
     import Staff from './Staff/staff.svelte'
     import {MidiNumberToNote} from '../functions/MiscFunctions'
-
+    import Switch from "svelte-switch";
 
     import Hoverable from './Hoverable.svelte';
     import Vex from 'vexflow';
 
     let VF = Vex.Flow;
     let n: number[] = []
+
+    let checkedValue = true;
+
+    function handleClefChange(e) {
+        const { checked } = e.detail;
+        checkedValue = checked;
+    }
 
     function handleMessage(event) {
         //console.log(event.detail)
@@ -21,7 +28,7 @@
         n = r;
     }
     //$: clef = 'treble';
-    $: clef = 'bass';
+    $: clef = checkedValue ? 'treble' : 'bass';
     $: pressedNotes = () => {
 
         if (n.length === 0) return undefined
@@ -54,6 +61,8 @@
 
 <section>
     <h3>Insert midi keyboard and play notes</h3>
+    <pre>Switch between trebble and bass (I have a bug through where the symbol isn't updating yet)</pre>
+    <Switch on:change={handleClefChange} checked={checkedValue} />
     <Midi on:notesOn={handleMessage}/>
     <Staff bind:voice={voice} bind:clef={clef}/>
     
